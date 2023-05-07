@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CrowFudingModelStoreContainer" CdmEntityContainer="CrowFudingEntities14">
+    <EntitySetMapping Name="Compaigns">
+      <EntityTypeMapping TypeName="CrowFudingModel.Compaign">
+        <MappingFragment StoreEntitySet="Compaign">
+          <ScalarProperty Name="compaign_id" ColumnName="compaign_id" />
+          <ScalarProperty Name="compaign_creater_id" ColumnName="compaign_creater_id" />
+          <ScalarProperty Name="compaign_description" ColumnName="compaign_description" />
+          <ScalarProperty Name="compaign_date_created" ColumnName="compaign_date_created" />
+          <ScalarProperty Name="compaign_title" ColumnName="compaign_title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donations">
+      <EntityTypeMapping TypeName="CrowFudingModel.Donation">
+        <MappingFragment StoreEntitySet="Donation">
+          <ScalarProperty Name="donation_reference" ColumnName="donation_reference" />
+          <ScalarProperty Name="donation_compaign_id" ColumnName="donation_compaign_id" />
+          <ScalarProperty Name="donation_user_id" ColumnName="donation_user_id" />
+          <ScalarProperty Name="donation_amount" ColumnName="donation_amount" />
+          <ScalarProperty Name="donation_date_created" ColumnName="donation_date_created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="CrowFudingModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_fname" ColumnName="user_fname" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_address" ColumnName="user_address" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_Lastname" ColumnName="user_Lastname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="refunds">
+      <EntityTypeMapping TypeName="CrowFudingModel.refund">
+        <MappingFragment StoreEntitySet="refund">
+          <ScalarProperty Name="refund_id" ColumnName="refund_id" />
+          <ScalarProperty Name="users_id" ColumnName="users_id" />
+          <ScalarProperty Name="Compaign_id" ColumnName="Compaign_id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="donation_reference" ColumnName="donation_reference" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="withdrawl_desciption">
+      <EntityTypeMapping TypeName="CrowFudingModel.withdrawl_desciption">
+        <MappingFragment StoreEntitySet="withdrawl_desciption">
+          <ScalarProperty Name="withdrawl_reference" ColumnName="withdrawl_reference" />
+          <ScalarProperty Name="withdrawl_discription" ColumnName="withdrawl_discription" />
+          <ScalarProperty Name="withdrawl_user_id" ColumnName="withdrawl_user_id" />
+          <ScalarProperty Name="withdrawl_amount" ColumnName="withdrawl_amount" />
+          <ScalarProperty Name="withdrawl_compaign_id" ColumnName="withdrawl_compaign_id" />
+          <ScalarProperty Name="donation_date_created" ColumnName="donation_date_created" />
+          <ScalarProperty Name="withdrawl_status" ColumnName="withdrawl_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="withdrawls_request">
+      <EntityTypeMapping TypeName="CrowFudingModel.withdrawls_request">
+        <MappingFragment StoreEntitySet="withdrawls_request">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="requested_by" ColumnName="requested_by" />
+          <ScalarProperty Name="requested_to" ColumnName="requested_to" />
+          <ScalarProperty Name="withdraw_description_id" ColumnName="withdraw_description_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CrowFudingModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CrowFudingModelStoreContainer">
+    <EntitySet Name="Compaign" EntityType="CrowFudingModel.Store.Compaign" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Donation" EntityType="CrowFudingModel.Store.Donation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profile" EntityType="CrowFudingModel.Store.Profile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="refund" EntityType="CrowFudingModel.Store.refund" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="withdrawl_desciption" EntityType="CrowFudingModel.Store.withdrawl_desciption" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="withdrawls_request" EntityType="CrowFudingModel.Store.withdrawls_request" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Compaign__compai__15502E78" Association="CrowFudingModel.Store.FK__Compaign__compai__15502E78">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Compaign" EntitySet="Compaign" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Donation__donati__1920BF5C" Association="CrowFudingModel.Store.FK__Donation__donati__1920BF5C">
+      <End Role="Compaign" EntitySet="Compaign" />
+      <End Role="Donation" EntitySet="Donation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Donation__donati__1A14E395" Association="CrowFudingModel.Store.FK__Donation__donati__1A14E395">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Donation" EntitySet="Donation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__refund__Compaign__70DDC3D8" Association="CrowFudingModel.Store.FK__refund__Compaign__70DDC3D8">
+      <End Role="Compaign" EntitySet="Compaign" />
+      <End Role="refund" EntitySet="refund" />
+    </AssociationSet>
+    <AssociationSet Name="FK__refund__users_id__6FE99F9F" Association="CrowFudingModel.Store.FK__refund__users_id__6FE99F9F">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="refund" EntitySet="refund" />
+    </AssociationSet>
+    <AssociationSet Name="FK__withdrawl__withd__1DE57479" Association="CrowFudingModel.Store.FK__withdrawl__withd__1DE57479">
+      <End Role="Compaign" EntitySet="Compaign" />
+      <End Role="withdrawl_desciption" EntitySet="withdrawl_desciption" />
+    </AssociationSet>
+    <AssociationSet Name="FK__withdrawl__withd__1ED998B2" Association="CrowFudingModel.Store.FK__withdrawl__withd__1ED998B2">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="withdrawl_desciption" EntitySet="withdrawl_desciption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_withdrawl_request_withdrawl_request" Association="CrowFudingModel.Store.FK_withdrawl_request_withdrawl_request">
+      <End Role="withdrawl_desciption" EntitySet="withdrawl_desciption" />
+      <End Role="withdrawl_desciption1" EntitySet="withdrawl_desciption" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Compaign">
+    <Key>
+      <PropertyRef Name="compaign_id" />
+    </Key>
+    <Property Name="compaign_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="compaign_creater_id" Type="int" Nullable="false" />
+    <Property Name="compaign_description" Type="varchar(max)" Nullable="false" />
+    <Property Name="compaign_date_created" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="compaign_title" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="donation_reference" />
+    </Key>
+    <Property Name="donation_reference" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="donation_compaign_id" Type="int" Nullable="false" />
+    <Property Name="donation_user_id" Type="int" Nullable="false" />
+    <Property Name="donation_amount" Type="int" Nullable="false" />
+    <Property Name="donation_date_created" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_fname" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="user_email" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="user_address" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_password" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_Lastname" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="refund">
+    <Key>
+      <PropertyRef Name="refund_id" />
+    </Key>
+    <Property Name="refund_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="users_id" Type="int" Nullable="false" />
+    <Property Name="Compaign_id" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="donation_reference" Type="int" />
+  </EntityType>
+  <EntityType Name="withdrawl_desciption">
+    <Key>
+      <PropertyRef Name="withdrawl_reference" />
+    </Key>
+    <Property Name="withdrawl_reference" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="withdrawl_discription" Type="varchar(max)" Nullable="false" />
+    <Property Name="withdrawl_user_id" Type="int" Nullable="false" />
+    <Property Name="withdrawl_amount" Type="int" Nullable="false" />
+    <Property Name="withdrawl_compaign_id" Type="int" Nullable="false" />
+    <Property Name="donation_date_created" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="withdrawl_status" Type="int" />
+  </EntityType>
+  <EntityType Name="withdrawls_request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="requested_by" Type="int" Nullable="false" />
+    <Property Name="requested_to" Type="int" Nullable="false" />
+    <Property Name="withdraw_description_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Compaign__compai__15502E78">
+    <End Role="Profile" Type="CrowFudingModel.Store.Profile" Multiplicity="1" />
+    <End Role="Compaign" Type="CrowFudingModel.Store.Compaign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Compaign">
+        <PropertyRef Name="compaign_creater_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Donation__donati__1920BF5C">
+    <End Role="Compaign" Type="CrowFudingModel.Store.Compaign" Multiplicity="1" />
+    <End Role="Donation" Type="CrowFudingModel.Store.Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compaign">
+        <PropertyRef Name="compaign_id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="donation_compaign_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Donation__donati__1A14E395">
+    <End Role="Profile" Type="CrowFudingModel.Store.Profile" Multiplicity="1" />
+    <End Role="Donation" Type="CrowFudingModel.Store.Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="donation_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__refund__Compaign__70DDC3D8">
+    <End Role="Compaign" Type="CrowFudingModel.Store.Compaign" Multiplicity="1" />
+    <End Role="refund" Type="CrowFudingModel.Store.refund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compaign">
+        <PropertyRef Name="compaign_id" />
+      </Principal>
+      <Dependent Role="refund">
+        <PropertyRef Name="Compaign_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__refund__users_id__6FE99F9F">
+    <End Role="Profile" Type="CrowFudingModel.Store.Profile" Multiplicity="1" />
+    <End Role="refund" Type="CrowFudingModel.Store.refund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="refund">
+        <PropertyRef Name="users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__withdrawl__withd__1DE57479">
+    <End Role="Compaign" Type="CrowFudingModel.Store.Compaign" Multiplicity="1" />
+    <End Role="withdrawl_desciption" Type="CrowFudingModel.Store.withdrawl_desciption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compaign">
+        <PropertyRef Name="compaign_id" />
+      </Principal>
+      <Dependent Role="withdrawl_desciption">
+        <PropertyRef Name="withdrawl_compaign_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__withdrawl__withd__1ED998B2">
+    <End Role="Profile" Type="CrowFudingModel.Store.Profile" Multiplicity="1" />
+    <End Role="withdrawl_desciption" Type="CrowFudingModel.Store.withdrawl_desciption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="withdrawl_desciption">
+        <PropertyRef Name="withdrawl_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_withdrawl_request_withdrawl_request">
+    <End Role="withdrawl_desciption" Type="CrowFudingModel.Store.withdrawl_desciption" Multiplicity="1" />
+    <End Role="withdrawl_desciption1" Type="CrowFudingModel.Store.withdrawl_desciption" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="withdrawl_desciption">
+        <PropertyRef Name="withdrawl_reference" />
+      </Principal>
+      <Dependent Role="withdrawl_desciption1">
+        <PropertyRef Name="withdrawl_reference" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

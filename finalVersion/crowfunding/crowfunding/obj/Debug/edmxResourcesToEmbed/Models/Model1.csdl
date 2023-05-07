@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CrowFudingModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="CrowFudingEntities14" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Compaigns" EntityType="CrowFudingModel.Compaign" />
+    <EntitySet Name="Donations" EntityType="CrowFudingModel.Donation" />
+    <EntitySet Name="Profiles" EntityType="CrowFudingModel.Profile" />
+    <EntitySet Name="refunds" EntityType="CrowFudingModel.refund" />
+    <EntitySet Name="withdrawl_desciption" EntityType="CrowFudingModel.withdrawl_desciption" />
+    <EntitySet Name="withdrawls_request" EntityType="CrowFudingModel.withdrawls_request" />
+    <AssociationSet Name="FK__Compaign__compai__15502E78" Association="CrowFudingModel.FK__Compaign__compai__15502E78">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="Compaign" EntitySet="Compaigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Donation__donati__1920BF5C" Association="CrowFudingModel.FK__Donation__donati__1920BF5C">
+      <End Role="Compaign" EntitySet="Compaigns" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__refund__Compaign__70DDC3D8" Association="CrowFudingModel.FK__refund__Compaign__70DDC3D8">
+      <End Role="Compaign" EntitySet="Compaigns" />
+      <End Role="refund" EntitySet="refunds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__withdrawl__withd__1DE57479" Association="CrowFudingModel.FK__withdrawl__withd__1DE57479">
+      <End Role="Compaign" EntitySet="Compaigns" />
+      <End Role="withdrawl_desciption" EntitySet="withdrawl_desciption" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Donation__donati__1A14E395" Association="CrowFudingModel.FK__Donation__donati__1A14E395">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="Donation" EntitySet="Donations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__refund__users_id__6FE99F9F" Association="CrowFudingModel.FK__refund__users_id__6FE99F9F">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="refund" EntitySet="refunds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__withdrawl__withd__1ED998B2" Association="CrowFudingModel.FK__withdrawl__withd__1ED998B2">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="withdrawl_desciption" EntitySet="withdrawl_desciption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_withdrawl_request_withdrawl_request" Association="CrowFudingModel.FK_withdrawl_request_withdrawl_request">
+      <End Role="withdrawl_desciption" EntitySet="withdrawl_desciption" />
+      <End Role="withdrawl_desciption1" EntitySet="withdrawl_desciption" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Compaign">
+    <Key>
+      <PropertyRef Name="compaign_id" />
+    </Key>
+    <Property Name="compaign_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="compaign_creater_id" Type="Int32" Nullable="false" />
+    <Property Name="compaign_description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="compaign_date_created" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="compaign_title" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Profile" Relationship="CrowFudingModel.FK__Compaign__compai__15502E78" FromRole="Compaign" ToRole="Profile" />
+    <NavigationProperty Name="Donations" Relationship="CrowFudingModel.FK__Donation__donati__1920BF5C" FromRole="Compaign" ToRole="Donation" />
+    <NavigationProperty Name="refunds" Relationship="CrowFudingModel.FK__refund__Compaign__70DDC3D8" FromRole="Compaign" ToRole="refund" />
+    <NavigationProperty Name="withdrawl_desciption" Relationship="CrowFudingModel.FK__withdrawl__withd__1DE57479" FromRole="Compaign" ToRole="withdrawl_desciption" />
+  </EntityType>
+  <EntityType Name="Donation">
+    <Key>
+      <PropertyRef Name="donation_reference" />
+    </Key>
+    <Property Name="donation_reference" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="donation_compaign_id" Type="Int32" Nullable="false" />
+    <Property Name="donation_user_id" Type="Int32" Nullable="false" />
+    <Property Name="donation_amount" Type="Int32" Nullable="false" />
+    <Property Name="donation_date_created" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Compaign" Relationship="CrowFudingModel.FK__Donation__donati__1920BF5C" FromRole="Donation" ToRole="Compaign" />
+    <NavigationProperty Name="Profile" Relationship="CrowFudingModel.FK__Donation__donati__1A14E395" FromRole="Donation" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_fname" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="user_email" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="user_address" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_password" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_Lastname" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Compaigns" Relationship="CrowFudingModel.FK__Compaign__compai__15502E78" FromRole="Profile" ToRole="Compaign" />
+    <NavigationProperty Name="Donations" Relationship="CrowFudingModel.FK__Donation__donati__1A14E395" FromRole="Profile" ToRole="Donation" />
+    <NavigationProperty Name="refunds" Relationship="CrowFudingModel.FK__refund__users_id__6FE99F9F" FromRole="Profile" ToRole="refund" />
+    <NavigationProperty Name="withdrawl_desciption" Relationship="CrowFudingModel.FK__withdrawl__withd__1ED998B2" FromRole="Profile" ToRole="withdrawl_desciption" />
+  </EntityType>
+  <EntityType Name="refund">
+    <Key>
+      <PropertyRef Name="refund_id" />
+    </Key>
+    <Property Name="refund_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="users_id" Type="Int32" Nullable="false" />
+    <Property Name="Compaign_id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="donation_reference" Type="Int32" />
+    <NavigationProperty Name="Compaign" Relationship="CrowFudingModel.FK__refund__Compaign__70DDC3D8" FromRole="refund" ToRole="Compaign" />
+    <NavigationProperty Name="Profile" Relationship="CrowFudingModel.FK__refund__users_id__6FE99F9F" FromRole="refund" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="withdrawl_desciption">
+    <Key>
+      <PropertyRef Name="withdrawl_reference" />
+    </Key>
+    <Property Name="withdrawl_reference" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="withdrawl_discription" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="withdrawl_user_id" Type="Int32" Nullable="false" />
+    <Property Name="withdrawl_amount" Type="Int32" Nullable="false" />
+    <Property Name="withdrawl_compaign_id" Type="Int32" Nullable="false" />
+    <Property Name="donation_date_created" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="withdrawl_status" Type="Int32" />
+    <NavigationProperty Name="Compaign" Relationship="CrowFudingModel.FK__withdrawl__withd__1DE57479" FromRole="withdrawl_desciption" ToRole="Compaign" />
+    <NavigationProperty Name="Profile" Relationship="CrowFudingModel.FK__withdrawl__withd__1ED998B2" FromRole="withdrawl_desciption" ToRole="Profile" />
+    <NavigationProperty Name="withdrawl_desciption1" Relationship="CrowFudingModel.FK_withdrawl_request_withdrawl_request" FromRole="withdrawl_desciption" ToRole="withdrawl_desciption1" />
+    <NavigationProperty Name="withdrawl_desciption2" Relationship="CrowFudingModel.FK_withdrawl_request_withdrawl_request" FromRole="withdrawl_desciption1" ToRole="withdrawl_desciption" />
+  </EntityType>
+  <EntityType Name="withdrawls_request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="requested_by" Type="Int32" Nullable="false" />
+    <Property Name="requested_to" Type="Int32" Nullable="false" />
+    <Property Name="withdraw_description_id" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Compaign__compai__15502E78">
+    <End Role="Profile" Type="CrowFudingModel.Profile" Multiplicity="1" />
+    <End Role="Compaign" Type="CrowFudingModel.Compaign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Compaign">
+        <PropertyRef Name="compaign_creater_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Donation__donati__1920BF5C">
+    <End Role="Compaign" Type="CrowFudingModel.Compaign" Multiplicity="1" />
+    <End Role="Donation" Type="CrowFudingModel.Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compaign">
+        <PropertyRef Name="compaign_id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="donation_compaign_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__refund__Compaign__70DDC3D8">
+    <End Role="Compaign" Type="CrowFudingModel.Compaign" Multiplicity="1" />
+    <End Role="refund" Type="CrowFudingModel.refund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compaign">
+        <PropertyRef Name="compaign_id" />
+      </Principal>
+      <Dependent Role="refund">
+        <PropertyRef Name="Compaign_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__withdrawl__withd__1DE57479">
+    <End Role="Compaign" Type="CrowFudingModel.Compaign" Multiplicity="1" />
+    <End Role="withdrawl_desciption" Type="CrowFudingModel.withdrawl_desciption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compaign">
+        <PropertyRef Name="compaign_id" />
+      </Principal>
+      <Dependent Role="withdrawl_desciption">
+        <PropertyRef Name="withdrawl_compaign_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Donation__donati__1A14E395">
+    <End Role="Profile" Type="CrowFudingModel.Profile" Multiplicity="1" />
+    <End Role="Donation" Type="CrowFudingModel.Donation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Donation">
+        <PropertyRef Name="donation_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__refund__users_id__6FE99F9F">
+    <End Role="Profile" Type="CrowFudingModel.Profile" Multiplicity="1" />
+    <End Role="refund" Type="CrowFudingModel.refund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="refund">
+        <PropertyRef Name="users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__withdrawl__withd__1ED998B2">
+    <End Role="Profile" Type="CrowFudingModel.Profile" Multiplicity="1" />
+    <End Role="withdrawl_desciption" Type="CrowFudingModel.withdrawl_desciption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="withdrawl_desciption">
+        <PropertyRef Name="withdrawl_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_withdrawl_request_withdrawl_request">
+    <End Role="withdrawl_desciption" Type="CrowFudingModel.withdrawl_desciption" Multiplicity="1" />
+    <End Role="withdrawl_desciption1" Type="CrowFudingModel.withdrawl_desciption" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="withdrawl_desciption">
+        <PropertyRef Name="withdrawl_reference" />
+      </Principal>
+      <Dependent Role="withdrawl_desciption1">
+        <PropertyRef Name="withdrawl_reference" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

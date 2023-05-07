@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="668106b9e6ab499e9f58a9e33296651b" Name="Diagram1">
+        <EntityTypeShape EntityType="CrowFudingModel.Compaign" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrowFudingModel.Donation" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrowFudingModel.Profile" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrowFudingModel.refund" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrowFudingModel.withdrawl_desciption" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrowFudingModel.withdrawls_request" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="CrowFudingModel.FK__Compaign__compai__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="CrowFudingModel.FK__Donation__donati__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="CrowFudingModel.FK__refund__Compaign__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="CrowFudingModel.FK__withdrawl__withd__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="CrowFudingModel.FK__Donation__donati__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="CrowFudingModel.FK__refund__users_id__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="CrowFudingModel.FK__withdrawl__withd__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="CrowFudingModel.FK_withdrawl_request_withdrawl_request" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
